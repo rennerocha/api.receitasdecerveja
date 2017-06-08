@@ -6,7 +6,7 @@ services:
         ports:
             - "8080:80"
         env_file:
-          - .env
+            - .env
         volumes:
             - ./api:/usr/src/app
         depends_on:
@@ -16,3 +16,5 @@ services:
         image: postgres:9.6.3
         ports:
             - "5432:5432"
+        env_file:
+            - .env

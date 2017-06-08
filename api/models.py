@@ -1,7 +1,19 @@
+import os
 import xml.etree.ElementTree as etree
 from pony import orm
 
-db = orm.Database('sqlite', 'receitasdecerveja.sqlite', create_db=True)
+import time
+time.sleep(10)
+
+db = orm.Database()
+
+db.bind(
+    'postgres',
+    user=os.environ.get('POSTGRES_USER'),
+    password=os.environ.get('POSTGRES_PASSWORD'),
+    host='db',
+    database=os.environ.get('POSTGRES_DATABASE')
+)
 
 
 class BeerStyle(db.Entity):
